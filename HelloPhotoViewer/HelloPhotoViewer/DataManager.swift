@@ -10,7 +10,6 @@ import Foundation
 import UIKit
 // Singleton
 class DataManager {
-    
     static let shared = DataManager()
     
     private var photos = [String]()
@@ -18,14 +17,33 @@ class DataManager {
     private let documentsURL:URL
     
     private init() {
+        
         documentsURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         print("Documents: \(documentsURL.path)")
+        
+        if photos.count < 2 {
+            for i in 0..<2 {
+                guard let image = UIImage(named: "cat\(i.description).jpg") else { return }
+                
+                if let dataToSave = UIImagePNGRepresentation(image){
+                    let fileUrl = documentsURL.appendingPathComponent("cat\(i.description).jpg")
+                    
+                    print("fileURL", fileUrl)
+                    do{
+                        try dataToSave.write(to: fileUrl)
+                    }catch{
+                        print("Can not save Image")
+                    }
+                }
+            }
+        }
+        
+        
         do {
             let files = try FileManager.default.contentsOfDirectory(atPath: documentsURL.path)
             photos += files
             
-            
-            //Workaround to remove ".DS_Stror" file.
+            // Workaround to remove ".DS_Stror" file.
             if let targerIndex = photos.index(of: ".DS_Store") {
                 print("Delete .DS_Store")
                 photos.remove(at: targerIndex)
@@ -34,26 +52,13 @@ class DataManager {
         } catch {
             print("FileManager Error: \(error.localizedDescription)")
         }
-        if photos.count < 2 {
-            guard let image = UIImage(named: "cat3.jpg") else { return }
-            
-            if let dataToSave = UIImagePNGRepresentation(image){
-                let fileUrl = documentsURL.appendingPathComponent("cat3.jpg")
-                
-                print("fileURL", fileUrl)
-                do{
-                    try dataToSave.write(to: fileUrl)
-                }catch{
-                    print("Can not save Image")
-                }
-            }
-        }
     }
     
-    var totalCount:Int {
+    //  MARK: Select image
+    func totalCount() -> Int {
+        print("photos.count:", photos.count)
         return photos.count
     }
-    
     
     /// Get Filename of Photos by index.
     ///
