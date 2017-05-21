@@ -166,11 +166,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.minimumZoomScale = 1.0
         scrollView.zoomScale = 1.0
         scrollView.delegate = self
-        
-        //imageView.frame.size = scrollView.frame.size
     }
 
-    
     var targetIndex = -1 {
         didSet {
             // Update the view.
