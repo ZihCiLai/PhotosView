@@ -9,6 +9,37 @@
 import UIKit
 import QuartzCore
 class DetailViewController: UIViewController, UIScrollViewDelegate {
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view, typically from a nib.
+        self.automaticallyAdjustsScrollViewInsets = false
+        self.configureView()
+        
+        let toRight = UISwipeGestureRecognizer(target: self, action: #selector(toRightAction))
+        
+        toRight.direction = .right
+        
+        imageView.addGestureRecognizer(toRight)
+        imageView.isUserInteractionEnabled = true
+        
+        slider.isHidden = true
+        
+        // hied play button if targetIndex is -1
+        if targetIndex == -1 {
+            self.navigationItem.rightBarButtonItem = nil
+        }
+        
+    }
+    
+    var timer:Timer?
+    
+    @IBOutlet weak var imageView: UIImageView!
+    
+    @IBOutlet weak var slider: UISlider!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
     
     @IBAction func toLeftAction(_ sender: Any) {
         
@@ -25,7 +56,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         imageView.layer.add(transition, forKey: nil)
         
         targetIndex += 1
-        if targetIndex >= DataManager.shared.totalCount {
+        if targetIndex >= DataManager.shared.totalCount() {
             targetIndex = 0
         }
         configureView()
@@ -47,23 +78,18 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         // 將動畫加入imageView 的layer層
         imageView.layer.add(transition, forKey: nil)
         
-        targetIndex -= 1
-        if targetIndex < 0 {
-            targetIndex = DataManager.shared.totalCount - 1
-        }
-        configureView()
-        
+        nextImage()
     }
     
-    var timer:Timer?
-    
-    @IBOutlet weak var imageView: UIImageView!
+    func nextImage() {
+        targetIndex -= 1
+        if targetIndex < 0 {
+            targetIndex = DataManager.shared.totalCount() - 1
+        }
+        configureView()
+    }
 
-    @IBOutlet weak var slider: UISlider!
     
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-
     @IBAction func playStopBtnPressed(_ sender: Any) {
         
         if slider.isHidden {
@@ -99,6 +125,25 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         timer = Timer.scheduledTimer(timeInterval: timeInterval, target: self, selector: #selector(toLeftAction(_:)), userInfo: nil, repeats: true)
     }
     
+    // Animation
+    @IBAction func nextPage(_ sender: UIBarButtonItem) {
+        nextImage()
+        animation()
+    }
+    func animation() {
+        UIView.beginAnimations("asdf", context: nil)
+        UIView.setAnimationDelegate(self)
+        UIView.setAnimationDidStop(#selector(animationDidStop))
+        UIView.setAnimationDuration(2)
+        UIView.setAnimationCurve(.easeOut)
+        UIView.setAnimationTransition(.curlDown, for: imageView, cache: true)
+        UIView.commitAnimations()
+    }
+    
+    func animationDidStop() {
+        print("DidStop")
+    }
+    
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return imageView
     }
@@ -114,6 +159,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         guard imageView != nil else {
             return
         }
+        
         imageView.image = image
         
         scrollView.contentSize = image.size
@@ -121,33 +167,8 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         scrollView.minimumZoomScale = 1.0
         scrollView.zoomScale = 1.0
         scrollView.delegate = self
-    }
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
-        self.automaticallyAdjustsScrollViewInsets = false
-        self.configureView()
         
-        let toRight = UISwipeGestureRecognizer(target: self, action: #selector(toRightAction))
-    
-        toRight.direction = .right
-        
-        imageView.addGestureRecognizer(toRight)
-        imageView.isUserInteractionEnabled = true
-    
-        slider.isHidden = true
-        
-        // hied play button if targetIndex is -1
-        if targetIndex == -1 {
-            self.navigationItem.rightBarButtonItem = nil
-        }
-        
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        //imageView.frame.size = scrollView.frame.size
     }
 
     
@@ -158,10 +179,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         }
     }
 
-    deinit {
-        print("deinit")
-    }
-    
     override func viewDidDisappear(_ animated: Bool) {
         super.viewDidDisappear(animated)
         
@@ -171,6 +188,14 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             timer = nil
         }
     }
+    
+    deinit {
+        print("deinit")
+    }
 
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
 }
 
