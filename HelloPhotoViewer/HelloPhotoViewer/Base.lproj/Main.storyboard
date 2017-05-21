@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16E195" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12120" systemVersion="16F73" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="H1p-Uh-vWS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12088"/>
+        <capability name="Navigation items with more than one left or right bar item" minToolsVersion="7.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -82,7 +83,16 @@
                             <outlet property="delegate" destination="bkh-P4-IKD" id="6bM-wm-8HW"/>
                         </connections>
                     </collectionView>
-                    <navigationItem key="navigationItem" id="ji9-xu-4fn"/>
+                    <navigationItem key="navigationItem" id="ji9-xu-4fn">
+                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="hAW-tn-RkB">
+                            <connections>
+                                <action selector="reLoadData:" destination="bkh-P4-IKD" id="6Td-g9-L2Y"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="collection" destination="vGj-Za-eiO" id="3P3-nD-sFH"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AsF-y0-h7V" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -105,6 +115,7 @@
                                 <subviews>
                                     <imageView contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="D2l-i0-cbz">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="543"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <gestureRecognizers/>
                                         <connections>
                                             <outletCollection property="gestureRecognizers" destination="qWj-nO-gwi" appends="YES" id="y8N-hU-xaW"/>
@@ -133,17 +144,24 @@
                     <navigationItem key="navigationItem" id="mOI-FS-AaM">
                         <nil key="title"/>
                         <slider key="titleView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" id="IgF-Sx-lif">
-                            <rect key="frame" x="8" y="6.5" width="317" height="31"/>
+                            <rect key="frame" x="8" y="6.5" width="269" height="31"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <connections>
                                 <action selector="timeIntervalValueChanged:" destination="JEX-9P-axG" eventType="valueChanged" id="Hdm-0L-ycE"/>
                             </connections>
                         </slider>
-                        <barButtonItem key="rightBarButtonItem" systemItem="play" id="ZFo-16-sTM">
-                            <connections>
-                                <action selector="playStopBtnPressed:" destination="JEX-9P-axG" id="ahX-9m-BUQ"/>
-                            </connections>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem systemItem="play" id="ZFo-16-sTM">
+                                <connections>
+                                    <action selector="playStopBtnPressed:" destination="JEX-9P-axG" id="ahX-9m-BUQ"/>
+                                </connections>
+                            </barButtonItem>
+                            <barButtonItem systemItem="refresh" id="4A0-ud-p9e">
+                                <connections>
+                                    <action selector="nextPage:" destination="JEX-9P-axG" id="2WN-K9-D4V"/>
+                                </connections>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>

@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		923EFCB31E0A58E30021F5CD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923EFCB21E0A58E30021F5CD /* AppDelegate.swift */; };
-		923EFCB51E0A58E30021F5CD /* f.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923EFCB41E0A58E30021F5CD /* f.swift */; };
 		923EFCB71E0A58E30021F5CD /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923EFCB61E0A58E30021F5CD /* DetailViewController.swift */; };
 		923EFCBA1E0A58E30021F5CD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 923EFCB81E0A58E30021F5CD /* Main.storyboard */; };
 		923EFCBC1E0A58E30021F5CD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 923EFCBB1E0A58E30021F5CD /* Assets.xcassets */; };
@@ -16,14 +15,13 @@
 		923EFCC71E0A594E0021F5CD /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923EFCC61E0A594E0021F5CD /* DataManager.swift */; };
 		923EFCC91E0A829D0021F5CD /* ThumbnailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923EFCC81E0A829D0021F5CD /* ThumbnailCollectionViewCell.swift */; };
 		923EFCCB1E0A849F0021F5CD /* ThumbnailCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 923EFCCA1E0A849F0021F5CD /* ThumbnailCollectionViewController.swift */; };
-		923EFCCD1E0B79E00021F5CD /* cat6.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 923EFCCC1E0B79E00021F5CD /* cat6.jpg */; };
-		923EFCCF1E0B7A600021F5CD /* cat3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 923EFCCE1E0B7A600021F5CD /* cat3.jpg */; };
+		923EFCCD1E0B79E00021F5CD /* cat1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 923EFCCC1E0B79E00021F5CD /* cat1.jpg */; };
+		923EFCCF1E0B7A600021F5CD /* cat0.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 923EFCCE1E0B7A600021F5CD /* cat0.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		923EFCAF1E0A58E30021F5CD /* HelloPhotoViewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HelloPhotoViewer.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		923EFCB21E0A58E30021F5CD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		923EFCB41E0A58E30021F5CD /* f.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = f.swift; sourceTree = "<group>"; };
 		923EFCB61E0A58E30021F5CD /* DetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		923EFCB91E0A58E30021F5CD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		923EFCBB1E0A58E30021F5CD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -32,8 +30,8 @@
 		923EFCC61E0A594E0021F5CD /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		923EFCC81E0A829D0021F5CD /* ThumbnailCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCollectionViewCell.swift; sourceTree = "<group>"; };
 		923EFCCA1E0A849F0021F5CD /* ThumbnailCollectionViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ThumbnailCollectionViewController.swift; sourceTree = "<group>"; };
-		923EFCCC1E0B79E00021F5CD /* cat6.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat6.jpg; sourceTree = "<group>"; };
-		923EFCCE1E0B7A600021F5CD /* cat3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat3.jpg; sourceTree = "<group>"; };
+		923EFCCC1E0B79E00021F5CD /* cat1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat1.jpg; sourceTree = "<group>"; };
+		923EFCCE1E0B7A600021F5CD /* cat0.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = cat0.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,9 +73,8 @@
 				923EFCBB1E0A58E30021F5CD /* Assets.xcassets */,
 				923EFCBD1E0A58E30021F5CD /* LaunchScreen.storyboard */,
 				923EFCC01E0A58E30021F5CD /* Info.plist */,
-				923EFCCE1E0B7A600021F5CD /* cat3.jpg */,
-				923EFCCC1E0B79E00021F5CD /* cat6.jpg */,
-				923EFCB41E0A58E30021F5CD /* f.swift */,
+				923EFCCE1E0B7A600021F5CD /* cat0.jpg */,
+				923EFCCC1E0B79E00021F5CD /* cat1.jpg */,
 			);
 			path = HelloPhotoViewer;
 			sourceTree = "<group>";
@@ -143,8 +140,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				923EFCBF1E0A58E30021F5CD /* LaunchScreen.storyboard in Resources */,
-				923EFCCF1E0B7A600021F5CD /* cat3.jpg in Resources */,
-				923EFCCD1E0B79E00021F5CD /* cat6.jpg in Resources */,
+				923EFCCF1E0B7A600021F5CD /* cat0.jpg in Resources */,
+				923EFCCD1E0B79E00021F5CD /* cat1.jpg in Resources */,
 				923EFCBC1E0A58E30021F5CD /* Assets.xcassets in Resources */,
 				923EFCBA1E0A58E30021F5CD /* Main.storyboard in Resources */,
 			);
@@ -159,7 +156,6 @@
 			files = (
 				923EFCB71E0A58E30021F5CD /* DetailViewController.swift in Sources */,
 				923EFCC71E0A594E0021F5CD /* DataManager.swift in Sources */,
-				923EFCB51E0A58E30021F5CD /* f.swift in Sources */,
 				923EFCC91E0A829D0021F5CD /* ThumbnailCollectionViewCell.swift in Sources */,
 				923EFCB31E0A58E30021F5CD /* AppDelegate.swift in Sources */,
 				923EFCCB1E0A849F0021F5CD /* ThumbnailCollectionViewController.swift in Sources */,

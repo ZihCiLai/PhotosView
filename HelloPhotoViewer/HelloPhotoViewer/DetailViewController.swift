@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import QuartzCore
+//import QuartzCore
 class DetailViewController: UIViewController, UIScrollViewDelegate {
 
     override func viewDidLoad() {
@@ -30,7 +30,6 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
         if targetIndex == -1 {
             self.navigationItem.rightBarButtonItem = nil
         }
-        
     }
     
     var timer:Timer?
