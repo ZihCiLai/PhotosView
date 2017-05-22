@@ -7,8 +7,8 @@
 //
 
 import UIKit
-//import QuartzCore
-class DetailViewController: UIViewController, UIScrollViewDelegate {
+import QuartzCore
+class DetailViewController: UIViewController, UIScrollViewDelegate, CAAnimationDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +43,7 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     @IBAction func toLeftAction(_ sender: Any) {
         
         let transition = CATransition()
+        transition.delegate = self
         // 運作的時間
         transition.duration = 0.3
         // 變化的速度
@@ -86,6 +87,14 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
             targetIndex = DataManager.shared.totalCount() - 1
         }
         configureView()
+    }
+    
+    func animationDidStop(_ anim: CAAnimation, finished flag: Bool) {
+        print("animationDidStop")
+    }
+    
+    func animationDidStart(_ anim: CAAnimation) {
+        print("animationDidStart")
     }
 
     
@@ -132,14 +141,14 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     func animation() {
         UIView.beginAnimations("asdf", context: nil)
         UIView.setAnimationDelegate(self)
-        UIView.setAnimationDidStop(#selector(animationDidStop))
+        UIView.setAnimationDidStop(#selector(animationStop))
         UIView.setAnimationDuration(2)
         UIView.setAnimationCurve(.easeOut)
         UIView.setAnimationTransition(.curlDown, for: imageView, cache: true)
         UIView.commitAnimations()
     }
     
-    func animationDidStop() {
+    func animationStop() {
         print("DidStop")
     }
     
